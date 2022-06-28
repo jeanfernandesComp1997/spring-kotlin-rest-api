@@ -1,7 +1,7 @@
 package br.com.localdemo.forum.infra.data.repositories
 
 import br.com.localdemo.forum.domain.entities.TopicQuestion
-import br.com.localdemo.forum.domain.interfaces.TopicRepository
+import br.com.localdemo.forum.domain.interfaces.repositories.TopicRepository
 import org.springframework.stereotype.Service
 
 @Service

@@ -1,8 +1,8 @@
 package br.com.localdemo.forum.application.queries
 
 import br.com.localdemo.forum.domain.entities.TopicQuestion
-import br.com.localdemo.forum.domain.interfaces.TopicQueries
-import br.com.localdemo.forum.domain.interfaces.TopicRepository
+import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
+import br.com.localdemo.forum.domain.interfaces.repositories.TopicRepository
 import org.springframework.stereotype.Service
 
 @Service

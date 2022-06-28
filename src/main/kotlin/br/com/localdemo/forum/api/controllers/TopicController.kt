@@ -2,8 +2,8 @@ package br.com.localdemo.forum.api.controllers
 
 import br.com.localdemo.forum.application.commands.RegisterTopicCommand
 import br.com.localdemo.forum.domain.entities.TopicQuestion
-import br.com.localdemo.forum.domain.interfaces.RegisterTopicHandler
-import br.com.localdemo.forum.domain.interfaces.TopicQueries
+import br.com.localdemo.forum.domain.interfaces.handlers.RegisterTopicHandler
+import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

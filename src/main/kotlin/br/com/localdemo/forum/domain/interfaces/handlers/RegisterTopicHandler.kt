@@ -1,4 +1,4 @@
-package br.com.localdemo.forum.domain.interfaces
+package br.com.localdemo.forum.domain.interfaces.handlers
 
 import br.com.localdemo.forum.application.commands.RegisterTopicCommand
 

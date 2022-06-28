@@ -1,4 +1,4 @@
-package br.com.localdemo.forum.domain.interfaces
+package br.com.localdemo.forum.domain.interfaces.queries
 
 import br.com.localdemo.forum.domain.entities.TopicQuestion
 
