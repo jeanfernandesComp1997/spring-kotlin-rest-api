@@ -1,6 +1,7 @@
 package br.com.localdemo.forum.api.controllers
 
 import br.com.localdemo.forum.application.commands.RegisterTopicCommand
+import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.domain.entities.TopicQuestion
 import br.com.localdemo.forum.domain.interfaces.handlers.RegisterTopicHandler
 import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
@@ -22,13 +23,15 @@ class TopicController(
 ) {
 
     @GetMapping
-    fun list(): ResponseEntity<List<TopicQuestion>> {
-        return ResponseEntity.ok(topicQueries.list())
+    @ResponseStatus(HttpStatus.OK)
+    fun list(): List<TopicQuestionView> {
+        return topicQueries.list()
     }
 
     @GetMapping("{id}")
-    fun getById(@PathVariable id: Long): ResponseEntity<TopicQuestion> {
-        return ResponseEntity.ok(topicQueries.getById(id))
+    @ResponseStatus(HttpStatus.OK)
+    fun getById(@PathVariable id: Long): TopicQuestionView {
+        return topicQueries.getById(id)
     }
 
     @PostMapping
