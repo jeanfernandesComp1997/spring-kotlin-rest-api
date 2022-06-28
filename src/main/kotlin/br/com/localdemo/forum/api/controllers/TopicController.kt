@@ -4,12 +4,14 @@ import br.com.localdemo.forum.application.commands.RegisterTopicCommand
 import br.com.localdemo.forum.domain.entities.TopicQuestion
 import br.com.localdemo.forum.domain.interfaces.RegisterTopicHandler
 import br.com.localdemo.forum.domain.interfaces.TopicQueries
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -30,8 +32,8 @@ class TopicController(
     }
 
     @PostMapping
-    fun register(@RequestBody topic: RegisterTopicCommand): ResponseEntity.HeadersBuilder<*> {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun register(@RequestBody topic: RegisterTopicCommand) {
         registerTopicHandler.register(topic)
-        return ResponseEntity.noContent()
     }
 }
