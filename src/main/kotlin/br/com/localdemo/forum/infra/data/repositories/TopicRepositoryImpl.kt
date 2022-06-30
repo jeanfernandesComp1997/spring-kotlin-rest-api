@@ -27,4 +27,9 @@ class TopicRepositoryImpl : TopicRepository {
     override fun list(): List<TopicQuestion> {
         return topics
     }
+
+    override fun remove(topic: TopicQuestion): Boolean {
+        data.remove(topic)
+        return true
+    }
 }

@@ -7,4 +7,5 @@ interface TopicRepository {
     fun save(topic: TopicQuestion): Boolean
     fun getById(id: Long): TopicQuestion
     fun list(): List<TopicQuestion>
+    fun remove(topic: TopicQuestion): Boolean
 }
