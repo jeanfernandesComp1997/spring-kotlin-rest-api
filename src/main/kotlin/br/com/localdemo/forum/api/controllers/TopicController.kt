@@ -4,9 +4,11 @@ import br.com.localdemo.forum.application.commands.RegisterTopicCommand
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.domain.dto.UpdateTopicCommand
 import br.com.localdemo.forum.domain.interfaces.handlers.RegisterTopicHandler
+import br.com.localdemo.forum.domain.interfaces.handlers.RemoveTopicHandler
 import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler
 import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
 import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -22,7 +24,8 @@ import javax.validation.Valid
 class TopicController(
     private val topicQueries: TopicQueries,
     private val registerTopicHandler: RegisterTopicHandler,
-    private val updateTopicHandler: UpdateTopicHandler
+    private val updateTopicHandler: UpdateTopicHandler,
+    private val removeTopicHandler: RemoveTopicHandler
 ) {
 
     @GetMapping
@@ -47,5 +50,11 @@ class TopicController(
     @ResponseStatus(HttpStatus.OK)
     fun update(@RequestBody @Valid command: UpdateTopicCommand) {
         updateTopicHandler.update(command)
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    fun remove(@PathVariable id: Long) {
+        removeTopicHandler.remove(id)
     }
 }

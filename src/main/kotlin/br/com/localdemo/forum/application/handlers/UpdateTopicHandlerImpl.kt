@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class UpdateTopicHandlerImpl(
-    private val topicRepository: TopicRepository,
+    private val topicRepository: TopicRepository
 ) : UpdateTopicHandler {
 
     override fun update(updateTopicCommand: UpdateTopicCommand) {
