@@ -8,6 +8,7 @@ import br.com.localdemo.forum.domain.interfaces.handlers.RemoveTopicHandler
 import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler
 import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.util.UriComponentsBuilder
 import javax.validation.Valid
 
 @RestController
@@ -42,18 +44,25 @@ class TopicController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun register(@RequestBody @Valid command: RegisterTopicCommand) {
-        registerTopicHandler.register(command)
+    fun register(
+        @RequestBody @Valid command: RegisterTopicCommand,
+        uriBuilder: UriComponentsBuilder
+    ): ResponseEntity<TopicQuestionView> {
+        val topic = registerTopicHandler.register(command)
+        val uri = uriBuilder.path("/topics/${topic.id}").build().toUri()
+
+        return ResponseEntity.created(uri).body(topic)
     }
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    fun update(@RequestBody @Valid command: UpdateTopicCommand) {
-        updateTopicHandler.update(command)
+    fun update(@RequestBody @Valid command: UpdateTopicCommand): ResponseEntity<TopicQuestionView> {
+        val topic = updateTopicHandler.update(command)
+        return ResponseEntity.ok(topic)
     }
 
     @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     fun remove(@PathVariable id: Long) {
         removeTopicHandler.remove(id)
     }
