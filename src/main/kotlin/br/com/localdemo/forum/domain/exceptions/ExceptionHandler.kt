@@ -22,4 +22,18 @@ class ExceptionHandler {
             path = request.servletPath
         )
     }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(Exception::class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    fun handleServerError(
+        exception: Exception,
+        request: HttpServletRequest
+    ): ExceptionView {
+        return ExceptionView(
+            status = HttpStatus.INTERNAL_SERVER_ERROR.value(),
+            error = HttpStatus.INTERNAL_SERVER_ERROR.name,
+            message = exception.message,
+            path = request.servletPath
+        )
+    }
 }
