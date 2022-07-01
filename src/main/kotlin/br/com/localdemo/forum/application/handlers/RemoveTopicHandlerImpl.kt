@@ -1,7 +1,7 @@
 package br.com.localdemo.forum.application.handlers
 
 import br.com.localdemo.forum.domain.interfaces.handlers.RemoveTopicHandler
-import br.com.localdemo.forum.domain.interfaces.repositories.TopicRepository
+import br.com.localdemo.forum.infra.data.repositories.TopicRepository
 import org.springframework.stereotype.Service
 
 @Service
@@ -10,7 +10,6 @@ class RemoveTopicHandlerImpl(
 ) : RemoveTopicHandler {
 
     override fun remove(id: Long) {
-        val topic = topicRepository.getById(id)
-        topicRepository.remove(topic)
+        topicRepository.deleteById(id)
     }
 }

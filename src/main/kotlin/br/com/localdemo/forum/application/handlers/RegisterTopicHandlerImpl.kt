@@ -4,9 +4,9 @@ import br.com.localdemo.forum.application.commands.RegisterTopicCommand
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.domain.entities.TopicQuestion
 import br.com.localdemo.forum.domain.interfaces.handlers.RegisterTopicHandler
-import br.com.localdemo.forum.domain.interfaces.repositories.CourseRepository
-import br.com.localdemo.forum.domain.interfaces.repositories.TopicRepository
-import br.com.localdemo.forum.domain.interfaces.repositories.UserRepository
+import br.com.localdemo.forum.infra.data.repositories.CourseRepository
+import br.com.localdemo.forum.infra.data.repositories.TopicRepository
+import br.com.localdemo.forum.infra.data.repositories.UserRepository
 import br.com.localdemo.forum.domain.mappers.TopicViewMapper
 import org.springframework.stereotype.Service
 
@@ -19,8 +19,8 @@ class RegisterTopicHandlerImpl(
 ) : RegisterTopicHandler {
 
     override fun register(registerTopicCommand: RegisterTopicCommand): TopicQuestionView {
-        val course = courseRepository.getById(registerTopicCommand.courseId)
-        val author = userRepository.getById(registerTopicCommand.authorId)
+        val course = courseRepository.getReferenceById(registerTopicCommand.courseId)
+        val author = userRepository.getReferenceById(registerTopicCommand.authorId)
 
         val topicQuestion = TopicQuestion.createNewTopicQuestion(
             registerTopicCommand.title,

@@ -4,7 +4,7 @@ import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.domain.dto.UpdateTopicCommand
 import br.com.localdemo.forum.domain.entities.TopicQuestion
 import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler
-import br.com.localdemo.forum.domain.interfaces.repositories.TopicRepository
+import br.com.localdemo.forum.infra.data.repositories.TopicRepository
 import br.com.localdemo.forum.domain.mappers.TopicViewMapper
 import org.springframework.stereotype.Service
 
@@ -15,22 +15,10 @@ class UpdateTopicHandlerImpl(
 ) : UpdateTopicHandler {
 
     override fun update(updateTopicCommand: UpdateTopicCommand): TopicQuestionView {
-        val topic = topicRepository.getById(updateTopicCommand.id)
-        topicRepository.remove(topic)
+        val topic = topicRepository.getReferenceById(updateTopicCommand.id)
+        topic.updateTitle(updateTopicCommand.title)
+        topic.updateMessage(updateTopicCommand.message)
 
-        val updatedTopic = TopicQuestion(
-            id = topic.id,
-            title = updateTopicCommand.title,
-            message = updateTopicCommand.message,
-            course = topic.course,
-            status = topic.status,
-            author = topic.author,
-            createdDate = topic.createdDate,
-            answers = topic.answers
-        )
-
-        topicRepository.save(updatedTopic)
-
-        return topicViewMapper.map(updatedTopic)
+        return topicViewMapper.map(topic)
     }
 }

@@ -9,6 +9,7 @@ import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler
 import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -43,6 +44,7 @@ class TopicController(
     }
 
     @PostMapping
+    @Transactional
     @ResponseStatus(HttpStatus.CREATED)
     fun register(
         @RequestBody @Valid command: RegisterTopicCommand,
@@ -55,6 +57,7 @@ class TopicController(
     }
 
     @PutMapping
+    @Transactional
     @ResponseStatus(HttpStatus.OK)
     fun update(@RequestBody @Valid command: UpdateTopicCommand): ResponseEntity<TopicQuestionView> {
         val topic = updateTopicHandler.update(command)
@@ -62,6 +65,7 @@ class TopicController(
     }
 
     @DeleteMapping("{id}")
+    @Transactional
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun remove(@PathVariable id: Long) {
         removeTopicHandler.remove(id)

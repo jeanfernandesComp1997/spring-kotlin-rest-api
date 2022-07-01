@@ -12,12 +12,11 @@ class TopicQuestion(
     message: String,
     createdDate: LocalDateTime,
     course: Course,
-    author: User,
+    author: Person,
     status: TopicStatus,
     answers: List<Answer>
 ) {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = id
         private set
 
@@ -35,7 +34,7 @@ class TopicQuestion(
         private set
 
     @ManyToOne
-    var author: User = author
+    var author: Person = author
         private set
 
     @Enumerated(value = EnumType.STRING)
@@ -47,7 +46,7 @@ class TopicQuestion(
         private set
 
     companion object {
-        fun createNewTopicQuestion(title: String, message: String, course: Course, author: User): TopicQuestion {
+        fun createNewTopicQuestion(title: String, message: String, course: Course, author: Person): TopicQuestion {
             return TopicQuestion(
                 id = Random.nextLong(0, Long.MAX_VALUE),
                 title = title,
@@ -59,5 +58,13 @@ class TopicQuestion(
                 answers = listOf()
             )
         }
+    }
+
+    fun updateTitle(title: String) {
+        this.title = title
+    }
+
+    fun updateMessage(message: String) {
+        this.message = message
     }
 }
