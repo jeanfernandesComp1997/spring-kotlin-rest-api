@@ -1,6 +1,7 @@
 package br.com.localdemo.forum.api.controllers
 
 import br.com.localdemo.forum.application.commands.RegisterTopicCommand
+import br.com.localdemo.forum.domain.dto.TopicByCategoryDto
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.domain.dto.UpdateTopicCommand
 import br.com.localdemo.forum.domain.interfaces.handlers.RegisterTopicHandler
@@ -83,5 +84,11 @@ class TopicController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun remove(@PathVariable id: Long) {
         removeTopicHandler.remove(id)
+    }
+
+    @GetMapping("report")
+    @ResponseStatus(HttpStatus.OK)
+    fun report(): List<TopicByCategoryDto> {
+        return topicQueries.report()
     }
 }

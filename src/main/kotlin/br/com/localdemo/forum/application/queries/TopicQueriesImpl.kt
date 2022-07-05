@@ -1,5 +1,6 @@
 package br.com.localdemo.forum.application.queries
 
+import br.com.localdemo.forum.domain.dto.TopicByCategoryDto
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
 import br.com.localdemo.forum.infra.data.repositories.TopicRepository
@@ -35,5 +36,9 @@ class TopicQueriesImpl(
         return topicRepository.getReferenceById(id).let { topic ->
             topicViewMapper.map(topic)
         }
+    }
+
+    override fun report(): List<TopicByCategoryDto> {
+        return topicRepository.report()
     }
 }

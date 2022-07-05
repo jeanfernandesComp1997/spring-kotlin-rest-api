@@ -6,3 +6,4 @@ create table course(
 );
 
 insert into course values(1, 'Kotlin', 'Development');
+insert into course values(2, 'DynamoDB save state', 'Docker');
