@@ -4,6 +4,6 @@ import br.com.localdemo.forum.domain.dto.TopicQuestionView
 
 interface TopicQueries {
 
-    fun list(): List<TopicQuestionView>
+    fun list(courseName: String?): List<TopicQuestionView>
     fun getById(id: Long): TopicQuestionView
 }

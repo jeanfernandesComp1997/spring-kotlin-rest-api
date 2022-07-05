@@ -4,4 +4,6 @@ import br.com.localdemo.forum.domain.entities.TopicQuestion
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface TopicRepository : JpaRepository<TopicQuestion, Long> {
+
+    fun findByCourseName(courseName: String): List<TopicQuestion>
 }

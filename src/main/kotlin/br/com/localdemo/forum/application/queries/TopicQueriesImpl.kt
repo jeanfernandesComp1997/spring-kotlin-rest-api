@@ -12,8 +12,14 @@ class TopicQueriesImpl(
     private val topicViewMapper: TopicViewMapper
 ) : TopicQueries {
 
-    override fun list(): List<TopicQuestionView> {
-        return topicRepository.findAll().map { topic ->
+    override fun list(courseName: String?): List<TopicQuestionView> {
+        val topics = if (courseName == null) {
+            topicRepository.findAll()
+        } else {
+            topicRepository.findByCourseName(courseName)
+        }
+
+        return topics.map { topic ->
             topicViewMapper.map(topic)
         }
     }
