@@ -7,6 +7,9 @@ import br.com.localdemo.forum.domain.interfaces.handlers.RegisterTopicHandler
 import br.com.localdemo.forum.domain.interfaces.handlers.RemoveTopicHandler
 import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler
 import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
@@ -34,8 +37,11 @@ class TopicController(
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    fun list(@RequestParam(required = false) courseName: String?): List<TopicQuestionView> {
-        return topicQueries.list(courseName)
+    fun list(
+        @RequestParam(required = false) courseName: String?,
+        @PageableDefault(size = 5) pagination: Pageable
+    ): Page<TopicQuestionView> {
+        return topicQueries.list(courseName, pagination)
     }
 
     @GetMapping("{id}")

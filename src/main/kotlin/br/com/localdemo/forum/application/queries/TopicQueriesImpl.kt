@@ -4,6 +4,8 @@ import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
 import br.com.localdemo.forum.infra.data.repositories.TopicRepository
 import br.com.localdemo.forum.domain.mappers.TopicViewMapper
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
@@ -12,11 +14,14 @@ class TopicQueriesImpl(
     private val topicViewMapper: TopicViewMapper
 ) : TopicQueries {
 
-    override fun list(courseName: String?): List<TopicQuestionView> {
+    override fun list(
+        courseName: String?,
+        pagination: Pageable
+    ): Page<TopicQuestionView> {
         val topics = if (courseName == null) {
-            topicRepository.findAll()
+            topicRepository.findAll(pagination)
         } else {
-            topicRepository.findByCourseName(courseName)
+            topicRepository.findByCourseName(courseName, pagination)
         }
 
         return topics.map { topic ->
