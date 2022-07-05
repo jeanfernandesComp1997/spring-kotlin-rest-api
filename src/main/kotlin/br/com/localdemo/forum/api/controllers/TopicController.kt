@@ -9,6 +9,7 @@ import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler
 import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -39,7 +40,7 @@ class TopicController(
     @ResponseStatus(HttpStatus.OK)
     fun list(
         @RequestParam(required = false) courseName: String?,
-        @PageableDefault(size = 5) pagination: Pageable
+        @PageableDefault(size = 5, sort = ["createdDate"], direction = Sort.Direction.DESC) pagination: Pageable
     ): Page<TopicQuestionView> {
         return topicQueries.list(courseName, pagination)
     }
