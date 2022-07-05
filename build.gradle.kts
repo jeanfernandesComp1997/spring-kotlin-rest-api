@@ -28,6 +28,8 @@ dependencies {
 	runtimeOnly("org.postgresql:postgresql")
 	implementation("org.flywaydb:flyway-core")
 
+	implementation("org.springframework.boot:spring-boot-starter-cache")
+
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
