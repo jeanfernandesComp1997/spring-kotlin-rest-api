@@ -15,7 +15,7 @@ class SecurityConfiguration() {
 
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
-        http.authorizeHttpRequests().anyRequest().authenticated()
+        http.authorizeHttpRequests().antMatchers("/topics").hasAuthority("READ_WRITE").anyRequest().authenticated()
             .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and().formLogin().disable().httpBasic()
 
