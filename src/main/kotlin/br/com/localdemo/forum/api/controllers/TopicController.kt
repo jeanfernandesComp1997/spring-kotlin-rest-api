@@ -3,7 +3,7 @@ package br.com.localdemo.forum.api.controllers
 import br.com.localdemo.forum.application.commands.RegisterTopicCommand
 import br.com.localdemo.forum.domain.dto.TopicByCategoryDto
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
-import br.com.localdemo.forum.domain.dto.UpdateTopicCommand
+import br.com.localdemo.forum.application.commands.UpdateTopicCommand
 import br.com.localdemo.forum.domain.interfaces.handlers.RegisterTopicHandler
 import br.com.localdemo.forum.domain.interfaces.handlers.RemoveTopicHandler
 import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler

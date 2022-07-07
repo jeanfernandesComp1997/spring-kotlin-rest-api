@@ -1,4 +1,4 @@
-package br.com.localdemo.forum.domain.dto
+package br.com.localdemo.forum.application.commands
 
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull

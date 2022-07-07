@@ -1,8 +1,7 @@
 package br.com.localdemo.forum.application.handlers
 
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
-import br.com.localdemo.forum.domain.dto.UpdateTopicCommand
-import br.com.localdemo.forum.domain.entities.TopicQuestion
+import br.com.localdemo.forum.application.commands.UpdateTopicCommand
 import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler
 import br.com.localdemo.forum.infra.data.repositories.TopicRepository
 import br.com.localdemo.forum.domain.mappers.TopicViewMapper
