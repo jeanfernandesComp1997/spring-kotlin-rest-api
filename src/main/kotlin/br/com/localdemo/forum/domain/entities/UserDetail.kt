@@ -6,7 +6,7 @@ class UserDetail(
     private val user: Person
 ) : UserDetails {
 
-    override fun getAuthorities() = null
+    override fun getAuthorities() = user.role
 
     override fun getPassword() = user.password
 
