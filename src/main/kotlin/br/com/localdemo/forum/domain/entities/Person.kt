@@ -8,5 +8,6 @@ data class Person(
     @Id
     val id: Long? = null,
     val name: String,
-    val email: String
+    val email: String,
+    val password: String
 )
