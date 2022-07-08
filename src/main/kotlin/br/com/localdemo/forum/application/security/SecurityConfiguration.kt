@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
-import org.springframework.web.filter.OncePerRequestFilter
 
 @Configuration
 @EnableWebSecurity
@@ -22,7 +21,8 @@ class SecurityConfiguration(
 
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
-        http.authorizeHttpRequests()
+        http.csrf().disable()
+            .authorizeHttpRequests()
             .antMatchers("/topics").hasAuthority("READ_WRITE")
             .antMatchers(HttpMethod.POST, "/login").permitAll().anyRequest().authenticated()
 
@@ -30,7 +30,8 @@ class SecurityConfiguration(
             JWTLoginFilter(authManager = configuration.authenticationManager, jwtUtil = jwtUtil),
             UsernamePasswordAuthenticationFilter().javaClass
         )
-        http.addFilterBefore(JWTAuthenticationFilter(jwtUtil), OncePerRequestFilter::class.java)
+
+        http.addFilterBefore(JWTAuthenticationFilter(jwtUtil), UsernamePasswordAuthenticationFilter().javaClass)
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
