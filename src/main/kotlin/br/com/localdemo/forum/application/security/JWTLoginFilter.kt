@@ -1,4 +1,4 @@
-package br.com.localdemo.forum.application.securiry
+package br.com.localdemo.forum.application.security
 
 import br.com.localdemo.forum.domain.entities.Credentials
 import com.fasterxml.jackson.databind.ObjectMapper
