@@ -24,10 +24,43 @@ Add the follow command on VM Options
 
 ## Running with Docker
 
-```dockerfile
+```bash
 sudo docker build -t forum-api -f Dockerfile .
 ```
 
-```dockerfile
+```bash
 sudo docker run -p 3000:8080 forum-api 
+```
+
+## Deploy on Heroku
+
+```bash
+heroku login
+```
+
+```bash
+heroku create
+```
+
+```bash
+heroku git:remote -a shielded-hollows-88487
+```
+
+```bash
+$ sudo usermod -aG myuser sally
+$ sudo groupadd docker
+$ sudo usermod -aG docker sally
+$ su - sally
+```
+
+```bash
+heroku container:login
+```
+
+```bash
+heroku container:push web
+```
+
+```bash
+heroku container:release web
 ```
