@@ -21,3 +21,13 @@ Add the follow command on VM Options
 ```bash
 -Dspring.profiles.active=dev
 ```
+
+## Running with Docker
+
+```dockerfile
+sudo docker build -t forum-api -f Dockerfile .
+```
+
+```dockerfile
+sudo docker run -p 3000:8080 forum-api 
+```
