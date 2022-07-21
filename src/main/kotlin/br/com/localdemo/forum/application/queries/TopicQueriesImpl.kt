@@ -8,7 +8,6 @@ import br.com.localdemo.forum.domain.mappers.TopicViewMapper
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import javax.persistence.EntityManager
 
 @Service
 class TopicQueriesImpl(
