@@ -1,13 +1,13 @@
 package br.com.localdemo.forum.domain.exceptions
 
 import br.com.localdemo.forum.domain.dto.ExceptionView
+import io.jsonwebtoken.JwtException
 import org.springframework.http.HttpStatus
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException
 import org.springframework.security.authentication.InsufficientAuthenticationException
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import javax.naming.AuthenticationException
 import javax.servlet.http.HttpServletRequest
 
 @RestControllerAdvice
@@ -77,8 +77,22 @@ class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(InsufficientAuthenticationException::class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    fun handleExpiredJwtException(
+    fun handleAuthenticationException(
         exception: InsufficientAuthenticationException,
+        request: HttpServletRequest
+    ): ExceptionView {
+        return ExceptionView(
+            status = HttpStatus.UNAUTHORIZED.value(),
+            error = HttpStatus.UNAUTHORIZED.name,
+            message = exception.message,
+            path = request.servletPath
+        )
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(JwtException::class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    fun handleExpiredJwtException(
+        exception: JwtException,
         request: HttpServletRequest
     ): ExceptionView {
         return ExceptionView(
