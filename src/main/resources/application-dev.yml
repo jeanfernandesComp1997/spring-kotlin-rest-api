@@ -17,5 +17,10 @@ spring:
     console:
       enabled: true
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
 jwt:
   secret: ?Qv/Ih=R=R?1s=$S80O=;E-DvEVx9,

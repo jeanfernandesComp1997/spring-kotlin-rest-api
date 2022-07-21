@@ -32,6 +32,7 @@ class SecurityConfiguration(
             .authorizeHttpRequests()
             .antMatchers("/topics").hasAuthority("READ_WRITE")
             .antMatchers(HttpMethod.POST, "/login").permitAll()
+            .antMatchers("/actuator/health").permitAll()
             .anyRequest()
             .authenticated()
             .and()
