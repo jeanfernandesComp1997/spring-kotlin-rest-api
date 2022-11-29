@@ -1,6 +1,6 @@
 package br.com.localdemo.forum.application.security
 
-import br.com.localdemo.forum.domain.interfaces.queries.UserQueries
+import br.com.localdemo.forum.application.queries.UserQueries
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.beans.factory.annotation.Value

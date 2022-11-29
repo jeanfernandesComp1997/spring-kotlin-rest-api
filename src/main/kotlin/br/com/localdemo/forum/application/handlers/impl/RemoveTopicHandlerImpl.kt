@@ -1,6 +1,6 @@
-package br.com.localdemo.forum.application.handlers
+package br.com.localdemo.forum.application.handlers.impl
 
-import br.com.localdemo.forum.domain.interfaces.handlers.RemoveTopicHandler
+import br.com.localdemo.forum.application.handlers.RemoveTopicHandler
 import br.com.localdemo.forum.infra.data.repositories.TopicRepository
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.stereotype.Service

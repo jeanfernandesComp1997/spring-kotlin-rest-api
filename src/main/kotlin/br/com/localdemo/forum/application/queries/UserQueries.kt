@@ -1,4 +1,4 @@
-package br.com.localdemo.forum.domain.interfaces.queries
+package br.com.localdemo.forum.application.queries
 
 import br.com.localdemo.forum.domain.entities.Person
 import org.springframework.security.core.userdetails.UserDetails

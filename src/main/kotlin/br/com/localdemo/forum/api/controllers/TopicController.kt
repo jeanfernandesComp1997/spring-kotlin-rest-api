@@ -4,12 +4,10 @@ import br.com.localdemo.forum.application.commands.RegisterTopicCommand
 import br.com.localdemo.forum.domain.dto.TopicByCategoryDto
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.application.commands.UpdateTopicCommand
-import br.com.localdemo.forum.domain.interfaces.handlers.RegisterTopicHandler
-import br.com.localdemo.forum.domain.interfaces.handlers.RemoveTopicHandler
-import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler
-import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
-import org.springframework.cache.annotation.CacheEvict
-import org.springframework.cache.annotation.Cacheable
+import br.com.localdemo.forum.application.handlers.RegisterTopicHandler
+import br.com.localdemo.forum.application.handlers.RemoveTopicHandler
+import br.com.localdemo.forum.application.handlers.UpdateTopicHandler
+import br.com.localdemo.forum.application.queries.TopicQueries
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort

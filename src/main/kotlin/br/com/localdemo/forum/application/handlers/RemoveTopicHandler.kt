@@ -1,4 +1,4 @@
-package br.com.localdemo.forum.domain.interfaces.handlers
+package br.com.localdemo.forum.application.handlers
 
 interface RemoveTopicHandler {
 

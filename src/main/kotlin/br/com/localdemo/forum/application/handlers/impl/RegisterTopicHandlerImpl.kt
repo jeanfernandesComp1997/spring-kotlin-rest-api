@@ -1,9 +1,9 @@
-package br.com.localdemo.forum.application.handlers
+package br.com.localdemo.forum.application.handlers.impl
 
 import br.com.localdemo.forum.application.commands.RegisterTopicCommand
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.domain.entities.TopicQuestion
-import br.com.localdemo.forum.domain.interfaces.handlers.RegisterTopicHandler
+import br.com.localdemo.forum.application.handlers.RegisterTopicHandler
 import br.com.localdemo.forum.infra.data.repositories.CourseRepository
 import br.com.localdemo.forum.infra.data.repositories.TopicRepository
 import br.com.localdemo.forum.infra.data.repositories.UserRepository

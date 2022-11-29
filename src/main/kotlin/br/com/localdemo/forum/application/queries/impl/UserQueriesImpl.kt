@@ -1,8 +1,8 @@
-package br.com.localdemo.forum.application.queries
+package br.com.localdemo.forum.application.queries.impl
 
+import br.com.localdemo.forum.application.queries.UserQueries
 import br.com.localdemo.forum.domain.entities.Person
 import br.com.localdemo.forum.domain.entities.UserDetail
-import br.com.localdemo.forum.domain.interfaces.queries.UserQueries
 import br.com.localdemo.forum.infra.data.repositories.UserRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService

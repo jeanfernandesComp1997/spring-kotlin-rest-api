@@ -1,4 +1,4 @@
-package br.com.localdemo.forum.domain.interfaces.queries
+package br.com.localdemo.forum.application.queries
 
 import br.com.localdemo.forum.domain.dto.TopicByCategoryDto
 import br.com.localdemo.forum.domain.dto.TopicQuestionView

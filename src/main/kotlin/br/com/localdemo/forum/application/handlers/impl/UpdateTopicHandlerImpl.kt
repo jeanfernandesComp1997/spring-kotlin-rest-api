@@ -1,8 +1,8 @@
-package br.com.localdemo.forum.application.handlers
+package br.com.localdemo.forum.application.handlers.impl
 
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
 import br.com.localdemo.forum.application.commands.UpdateTopicCommand
-import br.com.localdemo.forum.domain.interfaces.handlers.UpdateTopicHandler
+import br.com.localdemo.forum.application.handlers.UpdateTopicHandler
 import br.com.localdemo.forum.infra.data.repositories.TopicRepository
 import br.com.localdemo.forum.domain.mappers.TopicViewMapper
 import org.springframework.cache.annotation.CacheEvict

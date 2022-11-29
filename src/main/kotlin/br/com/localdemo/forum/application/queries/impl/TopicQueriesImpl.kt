@@ -1,8 +1,8 @@
-package br.com.localdemo.forum.application.queries
+package br.com.localdemo.forum.application.queries.impl
 
+import br.com.localdemo.forum.application.queries.TopicQueries
 import br.com.localdemo.forum.domain.dto.TopicByCategoryDto
 import br.com.localdemo.forum.domain.dto.TopicQuestionView
-import br.com.localdemo.forum.domain.interfaces.queries.TopicQueries
 import br.com.localdemo.forum.infra.data.repositories.TopicRepository
 import br.com.localdemo.forum.domain.mappers.TopicViewMapper
 import org.springframework.cache.annotation.Cacheable
