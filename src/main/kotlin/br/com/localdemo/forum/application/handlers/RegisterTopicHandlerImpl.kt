@@ -8,6 +8,7 @@ import br.com.localdemo.forum.infra.data.repositories.CourseRepository
 import br.com.localdemo.forum.infra.data.repositories.TopicRepository
 import br.com.localdemo.forum.infra.data.repositories.UserRepository
 import br.com.localdemo.forum.domain.mappers.TopicViewMapper
+import org.springframework.cache.annotation.CacheEvict
 import org.springframework.stereotype.Service
 
 @Service
@@ -18,6 +19,7 @@ class RegisterTopicHandlerImpl(
     private val topicViewMapper: TopicViewMapper
 ) : RegisterTopicHandler {
 
+    @CacheEvict(value = ["topics"], allEntries = true)
     override fun register(registerTopicCommand: RegisterTopicCommand): TopicQuestionView {
         val course = courseRepository.getReferenceById(registerTopicCommand.courseId)
         val author = userRepository.getReferenceById(registerTopicCommand.authorId)

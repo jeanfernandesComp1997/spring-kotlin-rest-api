@@ -1,6 +1,7 @@
 package br.com.localdemo.forum.domain.dto
 
 import br.com.localdemo.forum.domain.enums.TopicStatus
+import java.io.Serializable
 import java.time.LocalDateTime
 
 data class TopicQuestionView(
@@ -9,4 +10,4 @@ data class TopicQuestionView(
     val message: String,
     val status: TopicStatus,
     val createdDate: LocalDateTime
-)
+): Serializable

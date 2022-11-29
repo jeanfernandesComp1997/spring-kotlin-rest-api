@@ -40,7 +40,6 @@ class TopicController(
 ) {
 
     @GetMapping
-    @Cacheable("topics")
     @ResponseStatus(HttpStatus.OK)
     fun list(
         @RequestParam(required = false) courseName: String?,
@@ -57,7 +56,6 @@ class TopicController(
 
     @PostMapping
     @Transactional
-    @CacheEvict(value = ["topics"], allEntries = true)
     @ResponseStatus(HttpStatus.CREATED)
     fun register(
         @RequestBody @Valid command: RegisterTopicCommand,
@@ -71,7 +69,6 @@ class TopicController(
 
     @PutMapping
     @Transactional
-    @CacheEvict(value = ["topics"], allEntries = true)
     @ResponseStatus(HttpStatus.OK)
     fun update(@RequestBody @Valid command: UpdateTopicCommand): ResponseEntity<TopicQuestionView> {
         val topic = updateTopicHandler.update(command)
@@ -80,7 +77,6 @@ class TopicController(
 
     @DeleteMapping("{id}")
     @Transactional
-    @CacheEvict(value = ["topics"], allEntries = true)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun remove(@PathVariable id: Long) {
         removeTopicHandler.remove(id)
