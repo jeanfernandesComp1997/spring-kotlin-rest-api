@@ -19,7 +19,7 @@ class AnswerTopicHandlerImpl(
     private val answerViewMapper: AnswerViewMapper,
 ) : AnswerTopicHandler {
 
-    @CacheEvict(value = ["topics"], allEntries = true)
+    @CacheEvict(value = ["answers"], allEntries = true)
     override fun registerAnswer(registerAnswerCommand: RegisterAnswerCommand): AnswerView {
         val topic = topicRepository.getReferenceById(registerAnswerCommand.topicId)
         val author = userRepository.getReferenceById(registerAnswerCommand.authorId)

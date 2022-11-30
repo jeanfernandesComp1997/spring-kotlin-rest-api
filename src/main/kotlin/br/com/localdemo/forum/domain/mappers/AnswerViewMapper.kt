@@ -12,8 +12,8 @@ class AnswerViewMapper : Mapper<Answer, AnswerView> {
             id = a.id,
             message = a.message,
             createdDate = a.createdDate,
-            author = a.author,
-            topic = a.topic,
+            author = a.author.name,
+            topic = a.topic.title,
             solution = a.solution
         )
     }
