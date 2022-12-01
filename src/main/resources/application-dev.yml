@@ -23,6 +23,21 @@ spring:
     console:
       enabled: true
 
+  mail:
+    host:
+    port:
+    username:
+    password:
+    properties:
+      mail:
+        transport:
+          protocol:
+        debug:
+        smtp:
+          auth:
+          starttls:
+            enable:
+
 management:
   endpoints:
     web:
