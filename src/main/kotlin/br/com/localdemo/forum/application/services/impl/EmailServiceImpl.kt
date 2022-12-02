@@ -10,17 +10,17 @@ class EmailServiceImpl(
     private val javaMailSender: JavaMailSender
 ) : EmailService {
 
-    override fun sendNotification() {
-        val message = generateEmail()
+    override fun sendNotification(authorEmail: String) {
+        val message = generateEmail(authorEmail)
         javaMailSender.send(message)
     }
 
-    private fun generateEmail(): SimpleMailMessage {
+    private fun generateEmail(authorEmail: String): SimpleMailMessage {
         val message = SimpleMailMessage()
 
-        message.setSubject("")
-        message.setText("")
-        message.setTo("")
+        message.setSubject("[Course Plataform] Received answer")
+        message.setText("Hi, your question was answered! Let's check it?")
+        message.setTo(authorEmail)
 
         return message
     }

@@ -2,6 +2,7 @@ package br.com.localdemo.forum.application.handlers.impl
 
 import br.com.localdemo.forum.application.commands.RegisterAnswerCommand
 import br.com.localdemo.forum.application.handlers.AnswerTopicHandler
+import br.com.localdemo.forum.application.services.EmailService
 import br.com.localdemo.forum.domain.dto.AnswerView
 import br.com.localdemo.forum.domain.entities.Answer
 import br.com.localdemo.forum.domain.mappers.AnswerViewMapper
@@ -17,6 +18,7 @@ class AnswerTopicHandlerImpl(
     private val userRepository: UserRepository,
     private val answerRepository: AnswerRepository,
     private val answerViewMapper: AnswerViewMapper,
+    private val emailService: EmailService
 ) : AnswerTopicHandler {
 
     @CacheEvict(value = ["answers"], allEntries = true)
@@ -31,6 +33,9 @@ class AnswerTopicHandlerImpl(
         )
 
         answerRepository.save(answer)
+
+        val authorEmail = answer.author.email
+        emailService.sendNotification(authorEmail)
 
         return answerViewMapper.map(answer)
     }
