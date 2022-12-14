@@ -16,6 +16,8 @@ repositories {
 	mavenCentral()
 }
 
+extra["testcontainersVersion"] = "1.17.6"
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -38,7 +40,15 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
+	testImplementation("org.testcontainers:junit-jupiter")
 }
+
+dependencyManagement {
+	imports {
+		mavenBom("org.testcontainers:testcontainers-bom:${property("testcontainersVersion")}")
+	}
+}
+
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
