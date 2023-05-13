@@ -6,13 +6,10 @@ import br.com.localdemo.forum.domain.dto.AnswerView
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 import javax.validation.Valid
+
 
 @RestController
 @RequestMapping("answers")
@@ -31,5 +28,14 @@ class AnswerController(
         val uri = uriBuilder.path("/answers/${answer.id}").build().toUri()
 
         return ResponseEntity.created(uri).body(answer)
+    }
+
+    @RequestMapping("/hello")
+    @ResponseBody
+    fun greeting(): ResponseEntity<Any> {
+        val objectHello = object {
+            val greeting = "Hello guys!"
+        }
+        return ResponseEntity.ok(objectHello)
     }
 }
